@@ -26,11 +26,28 @@ class DataIngestion:
 
         try:
             data = pd.read_csv("https://raw.githubusercontent.com/Urvil-Dhanani/pricepredictor/main/gemstone.csv")
-            print(data.head(2))
-            
+            logging.info("Reading a csv file ...")
+
+            os.makedirs(os.path.dirname(os.path.join(self.ingestion_config.raw_data_path)),exist_ok=True)
+            data.to_csv(self.ingestion_config.raw_data_path, index=False)
+            logging.info("Raw data has been saved in Artifact directory.")
+
+            train_data, test_data = train_test_split(data, test_size=0.20)
+            logging.info("Train Test splitting done")
+
+            train_data.to_csv(self.ingestion_config.train_data_path, index=False)
+            test_data.to_csv(self.ingestion_config.test_data_path, index=False)
+            logging.info("Train & Test data are saved in Artifact directory")
+            logging.info("DATA INGESTION DONE !!!")
+
+            return (self.ingestion_config.train_data_path, self.ingestion_config.test_data_path)
+        
         except Exception as e:
             raise CustomException(e, sys)
+        
 
+    
 
-ing = DataIngestion()
-ing.initiate_data_ingestion()
+# testing
+# ing = DataIngestion()
+# ing.initiate_data_ingestion()
