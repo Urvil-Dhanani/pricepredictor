@@ -25,7 +25,7 @@ class DataIngestion:
         logging.info("Data Ingestion has been started")
 
         try:
-            data = pd.read_csv("https://raw.githubusercontent.com/Urvil-Dhanani/pricepredictor/main/gemstone.csv")
+            data = pd.read_csv("https://raw.githubusercontent.com/Urvil-Dhanani/pricepredictor/main/artifacts/raw_data.csv")
             logging.info("Reading a csv file ...")
 
             os.makedirs(os.path.dirname(os.path.join(self.ingestion_config.raw_data_path)),exist_ok=True)

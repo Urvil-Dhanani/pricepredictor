@@ -61,12 +61,12 @@ class ModelTrainer:
             logging.info("Exception clicked during Model training")
             raise CustomException(e, sys)
 
-# testing 
-obj1 = DataTransformation()
-train_arr, test_arr = obj1.initiate_data_transform("artifacts/train_data.csv", "artifacts/test_data.csv")
+# # testing 
+# obj1 = DataTransformation()
+# train_arr, test_arr = obj1.initiate_data_transform("artifacts/train_data.csv", "artifacts/test_data.csv")
 
-obj = ModelTrainer()
-obj.initiate_model_training(train_arr, test_arr)
+# obj = ModelTrainer()
+# obj.initiate_model_training(train_arr, test_arr)
             
 
 
