@@ -1,9 +1,9 @@
-import sys
-from src.exception.exception import CustomException
-from src.logger.logging import logging
+import os
+import pickle
 
-try:
-    a = 1/0
-except Exception as e:
-    logging.info("Error Occured")
-    raise CustomException(e, sys)
+model_path = os.path.join("artifacts", "model.pkl")
+
+with open(model_path, "rb") as file_obj:
+    model = pickle.load(file_obj)
+
+print(model.predict())
