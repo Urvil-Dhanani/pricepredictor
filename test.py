@@ -1,9 +1,16 @@
-import os
-import pickle
+import pandas as pd
 
-model_path = os.path.join("artifacts", "model.pkl")
+custom_data_input_dict = {
+                'carat':5,
+                'depth':6,
+                'table':7,
+                'x':[4],
+                'y':[2],
+                'z':[1],
+                'cut':["cct"],
+                'color':["cclr"],
+                'clarity':["cclari"]
+                }
 
-with open(model_path, "rb") as file_obj:
-    model = pickle.load(file_obj)
-
-print(model.predict())
+df = pd.DataFrame(custom_data_input_dict)
+print(df)

@@ -47,7 +47,7 @@ class ModelTrainer:
             model_best_score = max(sorted(model_report.values()))
 
             best_model_name = list(model_report.keys())[list(model_report.values()).index(model_best_score)]
-            best_model = model_report[best_model_name]
+            best_model = models[best_model_name]
 
             print(f"Best Model: {best_model_name} \nR2_score: {model_best_score}")
             print(60*"#")
@@ -61,12 +61,12 @@ class ModelTrainer:
             logging.info("Exception clicked during Model training")
             raise CustomException(e, sys)
 
-# # testing 
-# obj1 = DataTransformation()
-# train_arr, test_arr = obj1.initiate_data_transform("artifacts/train_data.csv", "artifacts/test_data.csv")
+# testing 
+obj1 = DataTransformation()
+train_arr, test_arr = obj1.initiate_data_transform("artifacts/train_data.csv", "artifacts/test_data.csv")
 
-# obj = ModelTrainer()
-# obj.initiate_model_training(train_arr, test_arr)
+obj = ModelTrainer()
+obj.initiate_model_training(train_arr, test_arr)
             
 
 
